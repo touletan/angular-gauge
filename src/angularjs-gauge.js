@@ -121,10 +121,10 @@
         var targetX = this.getCenter().x + Math.cos(angle) * (this.getRadius()) - (aw / 4);
         var targetY = this.getCenter().y + Math.sin(angle) * (this.getRadius()) - (aw / 2);
         this.target.css({
-          "border-radius": "50%",
-          "background-color": 'white',
-          "border-style": "solid",
-          color: "rgba(0, 150, 136, 1)",
+          'border-radius': '50%',
+          'background-color': 'white',
+          'border-style': 'solid',
+          color: this.options.foregroundColor.green,
           width: aw + 'px',
           height: aw + 'px',
           position: 'absolute',
