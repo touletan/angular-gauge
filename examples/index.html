@@ -5,146 +5,15 @@
     <title>Angular Gauge Playground</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
-    <link rel="stylesheet" href="main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-animate.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-aria.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-messages.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
     <script src="angularjs-gauge.min.js"></script>
     <script src="app.js"></script>
 </head>
 
 <body ng-controller="MainController as m">
-    <nav class="navbar navbar-toggleable-md fixed-top navbar-light">
-        <div class="container custom-width">
-            <a class="navbar-brand" href="#">Angular Gauge <span class="badge badge-default">2.1.0</span> &nbsp;&nbsp;<i class="main-color">Playground</i></a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://ashish-chopra.github.io/angular-gauge" title="visit website"><i class="fa fa-2x fa-hand-peace-o"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/ashish-chopra/angular-gauge" title="Checkout code on GitHub"><i class="fa fa-2x fa-github"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="spacer playground">
-        <section class="playground-section">
-            <md-toolbar class="md-accent">
-                <div class="md-toolbar-tools">
-                    <h3>Tune Gauge Properties</h3>
-                </div>
-            </md-toolbar>
-            <br>
-            <p>
-                This is Angular Gauge's playground. Here you get the options to fiddle with various properties of gauge widget directive.
-                Play around and see it working on the right side.
-            </p>
-
-            <br>
-            <div layout-gt-sm="row" class="md-block">
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Gauge Type</label>
-                    <md-select ng-model="m.options.type">
-                        <md-option value="full">Full</md-option>
-                        <md-option value="semi">Semi</md-option>
-                        <md-option value="arch">Arch</md-option>
-                    </md-select>
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Cap Style</label>
-                    <md-select ng-model="m.options.cap">
-                        <md-option value="round">Round</md-option>
-                        <md-option value="butt">Butt</md-option>
-                    </md-select>
-                </md-input-container>
-            </div>
-            <md-slider-container class="md-block">
-                <div>Size</div>
-                <md-slider min="100" max="500" class="md-primary" ng-model="m.options.size">
-                </md-slider>
-                <md-input-container>
-                    <input type="number" ng-model="m.options.size">
-                </md-input-container>
-            </md-slider-container>
-            <md-slider-container class="md-block">
-                <div>Thick</div>
-                <md-slider min="1" max="50" class="md-primary" ng-model="m.options.thick">
-                </md-slider>
-                <md-input-container>
-                    <input type="number" ng-model="m.options.thick">
-                </md-input-container>
-            </md-slider-container>
-            <br>
-            <div layout-gt-sm="row" class="md-block">
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Min</label>
-                    <input ng-model="m.options.min">
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Max</label>
-                    <input ng-model="m.options.max">
-                </md-input-container>
-            </div>
-            <md-input-container class="md-block">
-                <label>Value</label>
-                <input type="text" ng-model="m.options.value">
-            </md-input-container>
-            <md-input-container class="md-block">
-                <label>Label</label>
-                <input ng-model="m.options.label">
-            </md-input-container>
-            <div layout-gt-sm="row" class="md-block">
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Prepend</label>
-                    <input ng-model="m.options.prepend">
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Append</label>
-                    <input ng-model="m.options.append">
-                </md-input-container>
-            </div>
-            <div layout-gt-sm="row" class="md-block">
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Foreground Color</label>
-                    <input ng-model="m.options.foregroundColor">
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Background Color</label>
-                    <input ng-model="m.options.backgroundColor">
-                </md-input-container>
-            </div>
-            <div layout-gt-sm="row" class="md-block" layout-align="space-between center">
-                
-                    <div flex style="max-width:200px;">Thresholds</div>
-                    <md-switch ng-model="m.enableThresholds" aria-label="Switch 1"></md-switch>
-                
-            </div>
-            <small>Toggle the threshold switch to apply a threshold based color range configuration. And change the gauge's value to see different colors in action.</small>
-            <br> <br>
-            <md-whiteframe class="md-whiteframe-1dp" layout-padding layout layout-align="center center">
-               <pre><code>{{m.enableThresholds? m.thresholds : {} | json}}</code></pre>
-            </md-whiteframe>
-        </section>
-        <section class="playground-section">
-            <div>
-                <ng-gauge target=5 pass=3 total=6 epa='test' size=300></ng-gauge>
-            </div>
-        </section>
-    </div>
-    <div class="spacer"></div>
+  <div>
+    <ng-gauge target=5 pass=3 total=6 epa='test' size=300></ng-gauge>
+</div>
 </body>
 
 </html>
