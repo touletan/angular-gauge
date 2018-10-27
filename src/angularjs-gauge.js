@@ -114,7 +114,7 @@
           bottom: '0px'
         });
 
-        var aw = parseInt(fs) * 2;
+        var aw = parseInt(fs) * 1.7;
         var bounds = this.getBounds(this.options.type);
         var unit = (bounds.tail - bounds.head) / (this.getMax());
         var angle = bounds.head + (unit * (this.options.target));
@@ -130,7 +130,8 @@
           position: 'absolute',
           fontSize: fs + 'px',
           top: targetY + 'px',
-          left: targetX + 'px'
+          left: targetX + 'px',
+          'line-height': aw + 'px'
         });
 
 
