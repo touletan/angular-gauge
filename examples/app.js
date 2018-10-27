@@ -27,16 +27,16 @@
     var vm = this;
     vm.options = {
       type: 'arch',
-      cap: 'round',
+      cap: 'square',
       size: 300,
-      value: 45.3,
+      value: 50,
       thick: 20,
       label: 'Usage',
       append: 'GB',
       min: 0,
       max: 100,
-      foregroundColor: 'rgba(0, 150, 136, 1)',
-      backgroundColor: 'rgba(0, 0, 0, 0.1)'
+      foregroundColor: '#FEC925',
+      backgroundColor: 'rgba(0, 0, 0, 0.2)'
     };
 
     vm.thresholds = {

@@ -140,10 +140,7 @@
         </section>
         <section class="playground-section">
             <div>
-                <ng-gauge type="{{m.options.type}}" size="{{m.options.size}}" thick="{{m.options.thick}}" label="{{m.options.label}}" append="{{m.options.append}}"
-                    prepend="{{m.options.prepend}}" cap="{{m.options.cap}}" foreground-color="{{m.options.foregroundColor}}"
-                    background-color="{{m.options.backgroundColor}}" value="m.options.value" min="m.options.min" max="m.options.max"
-                    thresholds="m.enableThresholds ? m.thresholds : m.empty"></ng-gauge>
+                <ng-gauge target=5 pass=3 total=6 epa='test' size=300></ng-gauge>
             </div>
         </section>
     </div>
