@@ -9,10 +9,10 @@
   function gaugeMeterProviderFn() {
     var defaultOptions = {
       size: 200,
-      cap: 'square',
+      cap: 'butt',
       thick: 20,
       type: 'arch',
-      foregroundColor: { amber: '#FEC925', green: '#5AB190' },
+      foregroundColor: { amber: '#ffc900', green: '#33cd5f' },
       backgroundColor: 'rgba(0, 0, 0, 0.1)',
       duration: 1000,
       pass: 0 ,
@@ -41,9 +41,9 @@
   gaugeMeterDirective.$inject = ['ngGauge'];
 
   function gaugeMeterDirective(ngGauge) {
-
+    var fontStyle = 'font-size:16px;line-height:1.5;font-family: “Helvetica Neue”, Helvetica, Arial, sans-serif;';
     var tpl =
-      '<div style="display:inline-block;text-align:center;position:relative;">' +
+      '<div style="margin:0px 50px 50px 50px;display:inline-block;text-align:center;position:relative;' + fontStyle + '">' +
       '<pass> {{pass | number}} </pass>' +
       '<labelpass> Pass </labelpass>' +
       '<total> Total: {{ total | number }} </total>' +
@@ -103,15 +103,15 @@
           width: '100%',
           position: 'absolute',
           fontSize: fst + 'px',
-          top: topTotal + 'px'
+          top: topTotal + 'px'  
         });
-
+        var fslabel = this.options.size / 18; 
         this.epa.css({
           width: '120%',
           position: 'absolute',
-          fontSize: fst + 'px',
+          fontSize: fslabel + 'px',
           right: '-10%',
-          bottom: '0px'
+          top: this.options.size * 0.85 + 'px'
         });
 
         var aw = parseInt(fs) * 1.7;
@@ -229,12 +229,12 @@
 
         // move the line width back to normal
         context.lineWidth = context.lineWidth - 2;
-       // if (middle < tail) {
+        if (middle < tail) {
           context.beginPath();
           context.strokeStyle = 'white';
           context.arc(center.x, center.y, radius, middle, tail, false);
           context.stroke();
-        //}
+        }
 
         if (stopPass > start) {
           context.beginPath();
@@ -243,7 +243,6 @@
           context.stroke();
         }
         
-
       },
 
       clear: function () {
@@ -284,7 +283,7 @@
         return 0;
       },
       getMax: function () {
-        return Math.floor(this.options.target * 1.8);
+        return Math.max(2, Math.floor(this.options.target * 1.8));
       },
       getWidth: function () {
         return this.context.canvas.width;
