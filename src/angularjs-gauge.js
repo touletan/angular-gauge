@@ -15,9 +15,9 @@
       foregroundColor: { amber: '#ffc900', green: '#33cd5f' },
       backgroundColor: 'rgba(0, 0, 0, 0.1)',
       duration: 1000,
-      pass: 0 ,
+      pass: 0,
       target: 0,
-      total:0,
+      total: 0,
       epa: ''
     };
 
@@ -41,7 +41,7 @@
   gaugeMeterDirective.$inject = ['ngGauge'];
 
   function gaugeMeterDirective(ngGauge) {
-    var fontStyle = 'font-size:16px;line-height:1.5;font-family: “Helvetica Neue”, Helvetica, Arial, sans-serif;';
+    var fontStyle = 'color:#343a40;font-size:16px;line-height:1.5;font-family: “Helvetica Neue”, Helvetica, Arial, sans-serif;';
     var tpl =
       '<div style="margin:0px 50px 50px 50px;display:inline-block;text-align:center;position:relative;' + fontStyle + '">' +
       '<pass> {{pass | number}} </pass>' +
@@ -103,9 +103,9 @@
           width: '100%',
           position: 'absolute',
           fontSize: fst + 'px',
-          top: topTotal + 'px'  
+          top: topTotal + 'px'
         });
-        var fslabel = this.options.size / 18; 
+        var fslabel = this.options.size / 18;
         this.epa.css({
           width: '120%',
           position: 'absolute',
@@ -118,8 +118,8 @@
         var bounds = this.getBounds(this.options.type);
         var unit = (bounds.tail - bounds.head) / (this.getMax());
         var angle = bounds.head + (unit * (this.options.target));
-        var targetX = this.getCenter().x + Math.cos(angle) * (this.getRadius()) - (aw / 4);
-        var targetY = this.getCenter().y + Math.sin(angle) * (this.getRadius()) - (aw / 2);
+        var targetX = (this.getCenter().x - (aw/2)) + (Math.cos(angle) * this.getRadius());
+        var targetY = (this.getCenter().y - (aw/2)) + (Math.sin(angle) * this.getRadius());
         this.target.css({
           'border-radius': '50%',
           'background-color': 'white',
@@ -242,7 +242,7 @@
           context.arc(center.x, center.y, radius, start, stopPass, false);
           context.stroke();
         }
-        
+
       },
 
       clear: function () {
@@ -283,7 +283,7 @@
         return 0;
       },
       getMax: function () {
-        return Math.max(2, Math.floor(this.options.target * 1.8));
+        return Math.max(2, Math.floor(this.options.target * 1.8), this.options.total);
       },
       getWidth: function () {
         return this.context.canvas.width;
