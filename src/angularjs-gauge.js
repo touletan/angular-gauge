@@ -18,7 +18,7 @@
       pass: 0,
       target: 0,
       total: 0,
-      epa: ''
+      //epa: ''
     };
 
     this.setOptions = function (customOptions) {
@@ -43,12 +43,12 @@
   function gaugeMeterDirective(ngGauge) {
     var fontStyle = 'color:#343a40;font-size:16px;line-height:1.5;font-family: “Helvetica Neue”, Helvetica, Arial, sans-serif;';
     var tpl =
-      '<div style="margin:0px 50px 50px 50px;display:inline-block;text-align:center;position:relative;' + fontStyle + '">' +
+      '<div style="margin:0px 50px 0px 50px;display:inline-block;text-align:center;position:relative;' + fontStyle + '">' +
       '<pass> {{pass | number}} </pass>' +
       '<labelpass> Pass </labelpass>' +
       '<total> Total: {{ total | number }} </total>' +
       '<target> {{ target | number }} </target>' +
-      '<epa> {{ epa }} </epa>' +
+      //'<epa> {{ epa }} </epa>' +
       '<canvas></canvas>' +
       '</div>';
 
@@ -58,7 +58,7 @@
       this.total = element.find('total');
       this.labelpass = element.find('labelpass');
       this.target = element.find('target');
-      this.epa = element.find('epa');
+      //this.epa = element.find('epa');
       this.context = this.element.getContext('2d');
       this.options = options;
       this.init();
@@ -106,13 +106,13 @@
           top: topTotal + 'px'
         });
         var fslabel = this.options.size / 18;
-        this.epa.css({
+        /*this.epa.css({
           width: '120%',
           position: 'absolute',
           fontSize: fslabel + 'px',
           right: '-10%',
           top: this.options.size * 0.85 + 'px'
-        });
+        });*/
 
         var aw = parseInt(fs) * 1.7;
         var bounds = this.getBounds(this.options.type);
@@ -264,7 +264,7 @@
 
       getCenter: function () {
         var x = this.getWidth() / 2,
-          y = this.getHeight() / 2;
+          y = (this.getHeight() / 2);
         return {
           x: x,
           y: y
@@ -343,7 +343,7 @@
         pass: '@?',
         total: '@?',
         target: '@?',
-        epa: '@?'
+        //epa: '@?'
       },
       link: function (scope, element) {
         var defaults = ngGauge.getOptions(); // fetching default settings from provider
@@ -357,7 +357,7 @@
         scope.pass = angular.isDefined(scope.pass) ? scope.pass : defaults.pass;
         scope.total = angular.isDefined(scope.total) ? scope.total : defaults.total;
         scope.target = angular.isDefined(scope.target) ? scope.target : defaults.target;
-        scope.epa = angular.isDefined(scope.epa) ? scope.epa : defaults.epa;
+        //scope.epa = angular.isDefined(scope.epa) ? scope.epa : defaults.epa;
 
         var gauge = new Gauge(element, scope);
 
@@ -371,7 +371,7 @@
         scope.$watch('pass', watchOther, false);
         scope.$watch('total', watchOther, false);
         scope.$watch('target', watchOther, false);
-        scope.$watch('epa', watchData, false);
+        //scope.$watch('epa', watchData, false);
 
         scope.$on('$destroy', function () { });
         scope.$on('$resize', function () { });
