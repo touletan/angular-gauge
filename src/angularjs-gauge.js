@@ -74,7 +74,7 @@
       setupStyles: function () {
 
         this.context.canvas.width = this.options.size;
-        this.context.canvas.height = this.options.size;
+        this.context.canvas.height = this.options.size -50;
         this.context.lineCap = this.options.cap;
         this.context.lineWidth = this.options.thick;
 
@@ -286,11 +286,11 @@
         return Math.max(2, Math.floor(this.options.target * 1.8), this.options.total);
       },
       getWidth: function () {
-        return this.context.canvas.width;
+        return  this.options.size ;
       },
 
       getHeight: function () {
-        return this.context.canvas.height;
+        return  this.options.size ;
       },
 
       getThickness: function () {
